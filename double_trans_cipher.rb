@@ -31,17 +31,18 @@ module DoubleTranspositionCipher
     end
 
     # 5. return joined cyphertext
-   col_chunk.join.tr('*','')
+   #col_chunk.join.tr('*','')
+   col_chunk.join('')
   end
 
   def self.decrypt(ciphertext, key)
     # TODO: FILL THIS IN!
     _row_col_size, matrix = create_matrix(ciphertext)
-    sort_rows = matrix.unshuffle(random: Random.new(key))
+    sort_rows = matrix.unshuffle(random: Random.new(key.to_i))
     sort_columns = sort_rows.map do |s|
-      s.unshuffle(random: Random.new(key))
+      s.unshuffle(random: Random.new(key.to_i))
     end
-    sort_columns.map(&:join).join('').delete('♢')
+    sort_columns.map(&:join).join('').delete('*')
   end
 
   def self.create_matrix(text)
