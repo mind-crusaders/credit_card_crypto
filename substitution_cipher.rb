@@ -48,6 +48,6 @@ module SubstitutionCipher
        generation = (0..127).to_s.shuffle(random: Random.new(key))
        document.collect { |x| generation.index(x.ord).chr}.join
     end
-    end
+    
   end
 end
