@@ -1,4 +1,5 @@
 require 'rbnacl/libsodium'
+require "base64"
 
 module ModernSymmetricCipher
   def self.generate_new_key
@@ -9,14 +10,19 @@ module ModernSymmetricCipher
   def self.encrypt(document, key)
     # TODO: Return an encrypted string
     #       Use base64 for ciphertext so that it is sendable as text
-    
+      simple_box = RbNaCl::SimpleBox.from_secret_key(self.generate_new_key())
+      my_secret = simple_box.encrypt(document)
+      Base64.strict_encode64(my_secret)
   end
 
   def self.decrypt(encrypted_cc, key)
     # TODO: Decrypt from encrypted message above
     #       Expect Base64 encrypted message and Base64 key
+    decrpyto = Base64.strict_decode64(encrypted_cc)
+    simple_box = RbNaCl::SimpleBox.from_secret_key(key)
+    simple_box.decrypt(decrytpo)
   end
 end
 
-key = self.generate_new_key()
-puts key 
+cifra =  self.encrypt("This is my message","ori")
+self.decrypt(cifra,"ori")
