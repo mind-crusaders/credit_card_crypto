@@ -34,24 +34,14 @@ class CreditCard
     # TODO: deserializing a CreditCard object
     JSON.parse(card_s)
   end
-  
 
   # return a hash of the serialized credit card object
-  def hash
-    # TODO: implement this method
-    #   - Produce a hash (using default hash method) of the credit card's
-    #     serialized contents.
-    #   - Credit cards with identical information should produce the same hash
-    to_s.hash
-    #@number.hash ^ @expiration_date.hash ^ @expiration_date.hash ^ @owner.hash ^ @credit_network.hash
+  def hash    
+    to_s.hash    
   end
 
   # return a cryptographically secure hash
   def hash_secure
-    # TODO: implement this method
-    #   - Use sha256 from openssl to create a cryptographically secure hash.
-    #   - Credit cards with identical information should produce the same hash
-   #@number.hash_secure ^ @expiration_date.hash_secure ^ @expiration_date.hash_secure ^ @owner.hash_secure ^ @credit_network.hash_secure
-   Digest::SHA256.digest(to_s)
+    Digest::SHA256.digest(to_s)
   end
 end
