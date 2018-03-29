@@ -9,7 +9,7 @@ module ModernSymmetricCipher
 
   def self.encrypt(document, key)
     # TODO: Return an encrypted string
-    #       Use base64 for ciphertext so that it is sendable as text
+    #Use base64 for ciphertext so that it is sendable as text
       simple_box = RbNaCl::SimpleBox.from_secret_key(self.generate_new_key())
       my_secret = simple_box.encrypt(document)
       Base64.encode64(my_secret)
@@ -25,5 +25,5 @@ module ModernSymmetricCipher
 
 end
 
-cifra =  self.encrypt("This is my message","ori")
-self.decrypt(cifra,"ori")
+#cifra =  self.encrypt("This is my message","ori")
+#self.decrypt(cifra,"ori")
