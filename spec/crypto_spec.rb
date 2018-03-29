@@ -41,4 +41,8 @@ describe 'Test card info encryption' do
 
   # TODO: Add tests for double transposition and modern symmetric key ciphers
   #       Can you DRY out the tests using metaprogramming? (see lecture slide)
+
+  
+
+
 end
